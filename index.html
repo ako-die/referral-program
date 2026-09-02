@@ -43,11 +43,30 @@
 
 <main id="home" class="page">
   <div class="grid">
-    <button class="menu" onclick="openPage('loginPage')"><b>01</b><span>Login User</span></button>
-    <button class="menu" onclick="openPage('inputPage')"><b>02</b><span>Input Referral</span></button>
-    <button id="dailyMenu" class="menu" onclick="openPage('dailyPage')"><b>03</b><span>Daily Report</span></button>
-    <button class="menu" onclick="openPage('printPage')"><b>04</b><span>Cetak Laporan</span></button>
-  </div>
+    <button class="menu" onclick="openPage('loginPage')">
+  <b>01</b>
+  <span class="menu-icon">🔐</span>
+  <span>Login User</span>
+</button>
+
+<button class="menu" onclick="openPage('inputPage')">
+  <b>02</b>
+  <span class="menu-icon">📝</span>
+  <span>Input Referral</span>
+</button>
+
+<button id="dailyMenu" class="menu" onclick="openPage('dailyPage')">
+  <b>03</b>
+  <span class="menu-icon">📊</span>
+  <span>Daily Report</span>
+</button>
+
+<button class="menu" onclick="openPage('printPage')">
+  <b>04</b>
+  <span class="menu-icon">🖨️</span>
+  <span>Cetak Laporan</span>
+</button>
+      </div>
 </main>
 
 <section id="loginPage" class="page hidden">
