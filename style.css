@@ -359,3 +359,17 @@ tr:last-child td {
     display: block !important;
   }
 }
+/* PERBAIKAN LOGIN */
+.login-card .small-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
+  display: block;
+}
+
+.login-card h2 {
+  text-align: center;
+  color: #43136f;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
