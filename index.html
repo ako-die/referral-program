@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Referral Program</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="splash" class="screen splash">
+  <div class="logo">RP</div>
+  <h1>Referral Program</h1>
+  <p>Aplikasi Pelaporan Referral</p>
+  <button class="primary" onclick="showLogin()">MULAI</button>
+  <small>Created by Dee</small>
+</div>
+
+<div id="login" class="screen hidden">
+  <div class="card login-card">
+    <div class="logo small">RP</div>
+    <h2>Login User</h2>
+    <label>Nama User</label>
+    <input id="loginName" placeholder="Masukkan nama user">
+    <label>Jabatan</label>
+    <select id="loginRole">
+      <option value="petugas">Petugas</option>
+      <option value="pejabat">Pejabat</option>
+    </select>
+    <button class="primary" onclick="login()">LOGIN</button>
+    <button class="linkbtn" onclick="backSplash()">Kembali</button>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+<header>
+  <div>
+    <h1>Referral Program</h1>
+    <span id="userInfo"></span>
+  </div>
+  <button class="logout" onclick="logout()">Keluar</button>
+</header>
+
+<main id="home" class="page">
+  <div class="grid">
+    <button class="menu" onclick="openPage('loginPage')"><b>01</b><span>Login User</span></button>
+    <button class="menu" onclick="openPage('inputPage')"><b>02</b><span>Input Referral</span></button>
+    <button id="dailyMenu" class="menu" onclick="openPage('dailyPage')"><b>03</b><span>Daily Report</span></button>
+    <button class="menu" onclick="openPage('printPage')"><b>04</b><span>Cetak Laporan</span></button>
+  </div>
+</main>
+
+<section id="loginPage" class="page hidden">
+ <div class="card">
+  <h2>Login User</h2>
+  <p><b>User aktif:</b> <span id="activeName"></span></p>
+  <p><b>Role:</b> <span id="activeRole"></span></p>
+  <button class="secondary" onclick="goHome()">Kembali</button>
+ </div>
+</section>
+
+<section id="inputPage" class="page hidden">
+ <div class="card">
+  <h2>Input Referral</h2>
+  <form id="refForm">
+   <label>Tanggal</label><input id="tanggal" type="date" required>
+   <label>Nama</label><input id="nama" required>
+   <label>Unit Kerja</label><input id="unit" required>
+   <label>Nama Customer</label><input id="customer" required>
+   <label>Jenis Produk</label>
+   <select id="produk" required>
+    <option value="">Pilih produk</option><option>KKB</option><option>KPR</option><option>KSM</option><option>KUR</option><option>AIA</option><option>BCAlife</option><option>Refinancing</option>
+   </select>
+   <label>Status</label>
+   <select id="status" required>
+    <option value="">Pilih status</option><option>Pengajuan berkas</option><option>Dalam proses pengecekan</option><option>Telah disetujui</option><option>Ditolak</option>
+   </select>
+   <div class="actions"><button class="primary" type="submit">SIMPAN REFERRAL</button><button class="secondary" type="button" onclick="goHome()">Kembali</button></div>
+  </form>
+ </div>
+</section>
+
+<section id="dailyPage" class="page hidden">
+ <div class="card">
+  <h2>Daily Report</h2>
+  <div class="tabs"><button onclick="renderDaily('user')">Per User</button><button onclick="renderDaily('all')">Semua User</button></div>
+  <div id="dailyContent"></div>
+  <button class="secondary" onclick="goHome()">Kembali</button>
+ </div>
+</section>
+
+<section id="printPage" class="page hidden">
+ <div class="card">
+  <h2>Cetak Laporan</h2>
+  <div class="tabs"><button onclick="renderReport('user')">Per User</button><button id="allReportBtn" onclick="renderReport('all')">Semua Petugas</button></div>
+  <div id="reportContent"></div>
+  <div class="actions">
+   <button class="primary" onclick="printReport()">CETAK</button>
+   <button class="primary" onclick="shareReport()">SHARE</button>
+   <button class="secondary" onclick="goHome()">Kembali</button>
+  </div>
+ </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
