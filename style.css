@@ -373,3 +373,18 @@ tr:last-child td {
   margin-top: 8px;
   margin-bottom: 24px;
 }
+/* TOMBOL LOGIN DI TENGAH */
+.login-card .primary,
+.login-card .linkbtn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-card .primary {
+  min-width: 145px;
+}
+
+.login-card .linkbtn {
+  margin-top: 10px;
+}
