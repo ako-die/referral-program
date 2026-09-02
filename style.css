@@ -407,3 +407,7 @@ tr:last-child td {
 .menu:hover .menu-icon{
   transform:translateY(-2px) scale(1.04);
 }
+/* POSISI KOTAK LOGIN */
+#login .login-card{
+  transform:translateY(60px);
+}
