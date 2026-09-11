@@ -194,6 +194,22 @@ function renderReport(mode){
     `<p><b>${mode==="all"?"Semua Nama":"Nama: "+esc(currentUser.name)}</b> — ${rows.length} referral</p>` +
     table(rows);
 }
+function renderReportByName(){
+
+  const name = $("reportNameSelect").value;
+
+  if(!name){
+    $("reportContent").innerHTML =
+      '<p class="empty">Silakan pilih nama petugas.</p>';
+    return;
+  }
+
+  const rows = referrals.filter(r => r.user === name);
+
+  $("reportContent").innerHTML =
+    `<p><b>Nama: ${esc(name)}</b> — ${rows.length} referral</p>` +
+    table(rows);
+}
 function printReport(){window.print()}
 async function shareReport(){let rows=dataFor("user");let text="Referral Program\\nUser: "+currentUser.name+"\\nTotal referral: "+rows.length+"\\n\\n"+rows.map(r=>`${r.tanggal} | ${r.customer} | ${r.produk} | ${r.status}`).join("\\n");if(navigator.share){try{await navigator.share({title:"Referral Program",text})}catch(e){}}else{await navigator.clipboard.writeText(text);alert("Laporan disalin ke clipboard.")}}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
