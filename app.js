@@ -2,7 +2,8 @@ let currentUser={name:"",role:""}; let referrals=JSON.parse(localStorage.getItem
 const $=id=>document.getElementById(id);
 function showLogin(){$("splash").classList.add("hidden");$("login").classList.remove("hidden")}
 function backSplash(){$("login").classList.add("hidden");$("splash").classList.remove("hidden")}
-function login(){let n=$("loginName").value.trim();if(!n){alert("Nama user wajib diisi.");return}currentUser={name:n,role:$("loginRole").value};localStorage.setItem("currentUser",JSON.stringify(currentUser));$("login").classList.add("hidden");$("app").classList.remove("hidden");$("activeName").textContent=n;$("activeRole").textContent=currentUser.role==="pejabat"?"Pejabat":"Petugas";$("userInfo").textContent=n+" • "+$("activeRole").textContent;$("dailyMenu").style.display=currentUser.role==="pejabat"?"flex":"none";$("allReportBtn").style.display=currentUser.role==="pejabat"?"inline-block":"none";goHome()}
+function login(){let n=$("loginName").value.trim();if(!n){alert("Nama user wajib diisi.");return}currentUser={name:n,role:$("loginRole").value};localStorage.setItem("currentUser",JSON.stringify(currentUser));$("login").classList.add("hidden");$("app").classList.remove("hidden");$("activeName").textContent=n;$("activeRole").textContent=currentUser.role==="pejabat"?"Pejabat":"Petugas";$("userInfo").textContent=n+" • "+$("activeRole").textContent;$("dailyMenu").style.display="flex";
+$("allDailyBtn").style.display=currentUser.role==="pejabat"?"inline-block":"none";;$("allReportBtn").style.display=currentUser.role==="pejabat"?"inline-block":"none";goHome()}
 function logout(){currentUser={name:"",role:""};$("app").classList.add("hidden");$("login").classList.remove("hidden");$("loginName").value=""}
 function hidePages(){document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"))}
 function goHome(){hidePages();$("home").classList.remove("hidden")}
