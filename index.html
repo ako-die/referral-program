@@ -102,7 +102,10 @@
 <section id="dailyPage" class="page hidden">
  <div class="card">
   <h2>Daily Report</h2>
-  <div class="tabs"><button onclick="renderDaily('user')">Per User</button><button onclick="renderDaily('all')">Semua User</button></div>
+  <div class="tabs">
+    <button onclick="renderDaily('user')">Per Nama</button>
+    <button id="allDailyBtn" onclick="renderDaily('all')">Semua Nama</button>
+</div>
   <div id="dailyContent"></div>
   <button class="secondary" onclick="goHome()">Kembali</button>
  </div>
@@ -111,7 +114,7 @@
 <section id="printPage" class="page hidden">
  <div class="card">
   <h2>Cetak Laporan</h2>
-  <div class="tabs"><button onclick="renderReport('user')">Per User</button><button id="allReportBtn" onclick="renderReport('all')">Semua Petugas</button></div>
+  <div class="tabs"><button onclick="renderReport('user')">Per nama</button><button id="allReportBtn" onclick="renderReport('all')">Semua Petugas</button></div>
   <div id="reportContent"></div>
   <div class="actions">
    <button class="primary" onclick="printReport()">CETAK</button>
