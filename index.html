@@ -122,8 +122,19 @@
 <section id="printPage" class="page hidden">
  <div class="card">
   <h2>Cetak Laporan</h2>
-  <div class="tabs"><button onclick="renderReport('user')">Per nama</button><button id="allReportBtn" onclick="renderReport('all')">Semua Petugas</button></div>
-  <div id="reportContent"></div>
+  <div class="tabs">
+  <button onclick="renderReport('user')">Per Nama</button>
+  <button id="allReportBtn" onclick="renderReport('all')">Semua Nama</button>
+</div>
+
+<div id="reportNameBox" style="display:none; margin-bottom:18px;">
+  <label>Pilih Nama Petugas</label>
+  <select id="reportNameSelect" onchange="renderReportByName()">
+    <option value="">Pilih nama petugas</option>
+  </select>
+</div>
+
+<div id="reportContent"></div>
   <div class="actions">
    <button class="primary" onclick="printReport()">CETAK</button>
    <button class="primary" onclick="shareReport()">SHARE</button>
