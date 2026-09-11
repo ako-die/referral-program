@@ -156,7 +156,44 @@ function renderDailyRows(rows){
     summary +
    table(rows,true);
 }
-function renderReport(mode){if(mode==="all"&&currentUser.role!=="pejabat"){alert("Laporan semua petugas khusus Pejabat.");return}let rows=dataFor(mode);$("reportContent").innerHTML=`<p><b>${mode==="all"?"Semua Petugas":"User: "+esc(currentUser.name)}</b> — ${rows.length} referral</p>`+table(rows)}
+function renderReport(mode){
+
+  if(mode==="all" && currentUser.role!=="pejabat"){
+    alert("Laporan semua nama khusus Pejabat.");
+    return;
+  }
+
+  if(mode==="user" && currentUser.role==="pejabat"){
+
+    const names = [...new Set(
+      referrals.map(r => r.user)
+    )];
+
+    const box = $("reportNameBox");
+    const select = $("reportNameSelect");
+
+    box.style.display = "block";
+
+    select.innerHTML =
+      '<option value="">Pilih nama petugas</option>' +
+      names.map(n =>
+        `<option value="${esc(n)}">${esc(n)}</option>`
+      ).join("");
+
+    $("reportContent").innerHTML =
+      '<p class="empty">Silakan pilih nama petugas.</p>';
+
+    return;
+  }
+
+  $("reportNameBox").style.display = "none";
+
+  let rows = dataFor(mode);
+
+  $("reportContent").innerHTML =
+    `<p><b>${mode==="all"?"Semua Nama":"Nama: "+esc(currentUser.name)}</b> — ${rows.length} referral</p>` +
+    table(rows);
+}
 function printReport(){window.print()}
 async function shareReport(){let rows=dataFor("user");let text="Referral Program\\nUser: "+currentUser.name+"\\nTotal referral: "+rows.length+"\\n\\n"+rows.map(r=>`${r.tanggal} | ${r.customer} | ${r.produk} | ${r.status}`).join("\\n");if(navigator.share){try{await navigator.share({title:"Referral Program",text})}catch(e){}}else{await navigator.clipboard.writeText(text);alert("Laporan disalin ke clipboard.")}}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
