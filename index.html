@@ -102,11 +102,19 @@
 <section id="dailyPage" class="page hidden">
  <div class="card">
   <h2>Daily Report</h2>
-  <div class="tabs">
-    <button onclick="renderDaily('user')">Per Nama</button>
-    <button id="allDailyBtn" onclick="renderDaily('all')">Semua Nama</button>
+<div class="tabs">
+  <button onclick="renderDaily('user')">Per Nama</button>
+  <button id="allDailyBtn" onclick="renderDaily('all')">Semua Nama</button>
 </div>
-  <div id="dailyContent"></div>
+
+<div id="dailyNameBox" style="display:none; margin-bottom:18px;">
+  <label>Pilih Nama Petugas</label>
+  <select id="dailyNameSelect" onchange="renderDailyByName()">
+    <option value="">Pilih nama petugas</option>
+  </select>
+</div>
+
+<div id="dailyContent"></div>
   <button class="secondary" onclick="goHome()">Kembali</button>
  </div>
 </section>
