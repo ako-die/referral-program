@@ -14,7 +14,8 @@ function dataFor(mode){
     ? referrals
     : referrals.filter(r=>r.user===currentUser.name);
 }
-function table(rows){
+function table(rows, allowDelete=false){
+
   if(!rows.length){
     return '<div class="empty">Belum ada data referral.</div>';
   }
@@ -27,25 +28,28 @@ function table(rows){
     '<th>Customer</th>' +
     '<th>Produk</th>' +
     '<th>Status</th>' +
-    '<th>Aksi</th>' +
+    (allowDelete ? '<th>Aksi</th>' : '') +
     '</tr></thead><tbody>' +
 
     rows.map(r =>
-      `<tr>
-        <td>${r.tanggal}</td>
-        <td>${esc(r.user)}</td>
-        <td>${esc(r.nama)}</td>
-        <td>${esc(r.unit)}</td>
-        <td>${esc(r.customer)}</td>
-        <td>${esc(r.produk)}</td>
-        <td>${esc(r.status)}</td>
-        <td>
+      '<tr>' +
+      `<td>${r.tanggal}</td>` +
+      `<td>${esc(r.user)}</td>` +
+      `<td>${esc(r.nama)}</td>` +
+      `<td>${esc(r.unit)}</td>` +
+      `<td>${esc(r.customer)}</td>` +
+      `<td>${esc(r.produk)}</td>` +
+      `<td>${esc(r.status)}</td>` +
+
+      (allowDelete ?
+        `<td>
           <button class="secondary"
             onclick="deleteReferral(${r.id})">
             🗑 Hapus
           </button>
-        </td>
-      </tr>`
+        </td>` : '') +
+
+      '</tr>'
     ).join("") +
 
     '</tbody></table></div>';
